@@ -29,12 +29,15 @@ Install Ubuntu 24.04:
 Open the Microsoft Store, search for Ubuntu 24.04, and click Get or Install.
 If it’s not listed, you may need to wait until Canonical publishes it or stick with the default Ubuntu version.
 Check that you’re on WSL2:
-
+ ```
 wsl --list --verbose
+ ```
 If Version is 2 for Ubuntu-24.04, you’re good.
 If it’s 1, convert it:
 
+ ```
 wsl --set-version Ubuntu-24.04 2
+ ```
 (Replace Ubuntu-24.04 with whatever name appears in the list.)
 Launch Ubuntu from your Start menu and create a username and password when prompted.
 
@@ -50,20 +53,22 @@ Restart Docker Desktop to apply changes.
 ## Step 4: 
 Clone or Download This Repository
 In Ubuntu (WSL2) terminal, change to a desired directory:
-
+   ```bash
 cd ~
 Clone the repository:
 
 git clone https://github.com/techman44/docker-openwebui.git
 cd docker-openwebui
+ ```
 
 If you prefer, download the ZIP from GitHub and extract it into your Ubuntu filesystem under /home/<username>.
 
 ## Step 5:
 Run Docker Compose
 From the same folder as the docker-compose.yml file:
-
+```
 docker compose --compatibility up -d
+ ```
 --compatibility ensures older Compose fields (like deploy) work correctly.
 -d runs containers in detached mode (in the background).
 
@@ -72,8 +77,9 @@ docker compose --compatibility up -d
 ## Step 6:
 Stopping the Containers
 To stop all running containers in this Compose project:
-
+ ```
 docker compose down
+ ```
 This stops and removes them, letting you redeploy fresh later.
 
 ## Step 8: 
