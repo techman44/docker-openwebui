@@ -1,0 +1,58 @@
+version: '3.9'  # Compose v2 will ignore this, but it's okay to leave.
+
+services:
+  #################################################################
+  # NGINX PROXY MANAGER
+  #################################################################
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: npm
+    restart: unless-stopped
+    ports:
+      - "80:80"      # HTTP
+      - "81:81"      # Admin UI
+      - "443:443"    # HTTPS
+    volumes:
+      - ./npm/data:/data
+      - ./npm/letsencrypt:/etc/letsencrypt
+    networks:
+      - app-net
+
+
+
+  #################################################################
+  # OPENWEBUI (OLLAMA) – LLM Container
+  #################################################################
+  openwebui_ollama:
+    image: ghcr.io/open-webui/open-webui:ollama
+    container_name: open_webui_ollama
+    restart: unless-stopped
+
+    # GPU reservations
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    environment:
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      # The :ollama image typically runs on port 8080 internally with a default server
+      # We'll try to override it, but often it remains 8080 inside the container
+      CLI_ARGS: "--api --listen 0.0.0.0 --port 8080"
+    volumes:
+      - ./openwebui/models:/root/.ollama
+      - ./openwebui/data:/app/backend/data
+
+    # Map 3000 externally to 8080 internally, so you can open http://HOST:3000
+    ports:
+      - "3000:8080"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
