@@ -1,3 +1,6 @@
+# Option 1 
+setup and run manually with docker compose
+
 # Docker Compose deployment of Openwebui and NPM . 
 
 Can be used in Widnwos with WSL2
@@ -53,7 +56,7 @@ Restart Docker Desktop to apply changes.
 ## Step 4: 
 Clone or Download This Repository
 In Ubuntu (WSL2) terminal, change to a desired directory:
-   ```bash
+```
 cd ~
 Clone the repository:
 
@@ -90,3 +93,33 @@ Check WSL Version:
 Use wsl --list --verbose in PowerShell to confirm your Ubuntu version is set to WSL2.
 GPU / Advanced Features:
 If leveraging GPU passthrough, install appropriate drivers on Windows and consider the NVIDIA Container Toolkit for Ubuntu.
+
+
+
+
+# Option 2 
+```
+cd ~
+Clone the repository:
+
+git clone https://github.com/techman44/docker-openwebui.git
+cd docker-openwebui
+ ```
+
+The you can run the automated setup in linux (assuming WSL2 and Ubuntu etc is already setup and working
+
+```
+cd ~
+cd docker-openwebui
+ ```
+
+
+```
+chmod +x autosetup.sh
+
+./autosetup.sh
+ ```
+
+
+
+
