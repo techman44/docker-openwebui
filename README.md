@@ -40,7 +40,7 @@ Launch Ubuntu from your Start menu and create a username and password when promp
 
 ## Step 3:
 Install Docker Desktop (with WSL2 Integration)
-Download Docker Desktop for Windows and run the installer.
+Download Docker Desktop for Windows and run the installer. (https://www.docker.com/products/docker-desktop/)
 Enable WSL2 during setup if prompted.
 Open Docker Desktop → Settings → Resources → WSL Integration:
 Turn on integration (toggle or checkbox) for Ubuntu-24.04.
