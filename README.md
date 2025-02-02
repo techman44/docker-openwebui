@@ -98,6 +98,8 @@ If leveraging GPU passthrough, install appropriate drivers on Windows and consid
 
 
 # Option 2 
+Automatically setup a new environment with docker etc and then automatically create a docker-compose.yaml file and run it. 
+
 ```
 cd ~
 Clone the repository:
@@ -106,7 +108,7 @@ git clone https://github.com/techman44/docker-openwebui.git
 cd docker-openwebui
  ```
 
-The you can run the automated setup in linux (assuming WSL2 and Ubuntu etc is already setup and working
+The you can run the automated setup in linux (assuming WSL2 and Ubuntu etc is already setup and working)
 
 ```
 cd ~
